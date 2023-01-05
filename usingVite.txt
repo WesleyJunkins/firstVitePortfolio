@@ -1,0 +1,15 @@
+To use Vite, navigate to the folder you want to create the new project in.
+Go to the terminal (or integrated terminal in VS code), and type in npm init vite. 
+Then fill out the project name, package name, and select the type of package you would like to use.
+Then type cd projectNameYouJustCreated. This will take you to the directory of the project you created.
+(This new project will more than likely be in the HOME folder of your mac. You can move it to any new folder with no problem.)
+Then, and npm install three.
+Finally type npm run dev.
+Any time you want to start a server, you have to type npm run dev. Then cmd click the link to open it in a web browser.
+
+When you use Vite, you can use "import * as THREE from 'three';"
+To do this, you will have to make the script that reads your main.js into a type="module";
+
+If you do not use Vite, you can simply add the three.js file (not the large folder) as a script into your index.html file
+before the main.js file.
+Then you do not have to use "import * as THREE from 'three';"
