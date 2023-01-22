@@ -9,9 +9,9 @@ const pointLight = new THREE.PointLight(0xffffff); //0x is a hexadecimal literal
 pointLight.position.set(20, 20, 20);
 const ambientLight = new THREE.AmbientLight(0xffffff); //Ambient light will light up everything evenly.
 scene.add(pointLight, ambientLight);
-const lightHelper = new THREE.PointLightHelper(pointLight);
-const gridHelper = new THREE.GridHelper(200, 50);
-scene.add(lightHelper, gridHelper);
+// const lightHelper = new THREE.PointLightHelper(pointLight);
+// const gridHelper = new THREE.GridHelper(200, 50);
+// scene.add(lightHelper, gridHelper);
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -20,16 +20,29 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
+camera.position.setZ(500);
+camera.position.setX(-3);
 
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100); //The vectors that make up an object.
+const geometry = new THREE.TorusGeometry(6, 0.05, 16, 100); //The vectors that make up an object.
 const material = new THREE.MeshStandardMaterial({
-    color: 0xFF6347,
+    color: 0xFFA500,
 }); //The wrapping paper to go around that object.
 const torus = new THREE.Mesh(geometry, material) //Geometry + Material
 scene.add(torus);
+const geometry1 = new THREE.TorusGeometry(6, 0.05, 16, 100); //The vectors that make up an object.
+const material1 = new THREE.MeshStandardMaterial({
+    color: 0xFF0000,
+}); //The wrapping paper to go around that object.
+const torus1 = new THREE.Mesh(geometry1, material1) //Geometry + Material
+scene.add(torus1);
+const geometry2 = new THREE.TorusGeometry(6, 0.05, 16, 100); //The vectors that make up an object.
+const material2 = new THREE.MeshStandardMaterial({
+    color: 0x00FF00,
+}); //The wrapping paper to go around that object.
+const torus2 = new THREE.Mesh(geometry2, material2) //Geometry + Material
+scene.add(torus2);
 
-const controls = new OrbitControls(camera, renderer.domElement); //This will listen to dom events on the mouse, and update the camera position accordingly.
+//const controls = new OrbitControls(camera, renderer.domElement); //This will listen to dom events on the mouse, and update the camera position accordingly.
 
 function addStar(){
     const geometry = new THREE.SphereGeometry(0.25, 24, 24);
@@ -67,14 +80,44 @@ const moon = new THREE.Mesh(
     })
 );
 scene.add(moon);
+moon.position.z = 10;            //Both of these do
+moon.position.setX(-10);         //the same thing!
+
+wes.position.z = -5;
+wes.position.x = 2;
+wes.position.y = 0.3;
+
+function moveCamera(){
+    const t = document.body.getBoundingClientRect().top; //This will get the position on the webpage that the user has already scrolled to. The "top" property will show us exactly how far we are from the top of the webpage.
+    moon.rotation.x += 0.05;
+    moon.rotation.y += 0.075;
+    moon.rotation.z += 0.05;
+
+    wes.rotation.y += 0.01;
+    wes.rotation.z += 0.01;
+
+    camera.position.z = t * -0.01;
+    camera.position.x = t * -0.0002;
+    camera.rotation.y = t * -0.0004;
+}
+document.body.onscroll = moveCamera; //This will make the camera move when we scroll. This is an event handler.
+moveCamera();
 
 function animate(){
     requestAnimationFrame(animate);
     torus.rotation.x += 0.01;
     torus.rotation.y += 0.005;
     torus.rotation.z += 0.01;
+    torus1.rotation.x += 0.005;
+    torus1.rotation.y += 0.01;
+    torus1.rotation.z += 0.01;
+    torus2.rotation.x += 0.01;
+    torus2.rotation.y += 0.01;
+    torus2.rotation.z += 0.005;
 
-    controls.update();
+    moon.rotation.x += 0.005;
+
+    //controls.update(); //This is for orbitControls
 
     renderer.render(scene, camera);
 }
