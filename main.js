@@ -80,7 +80,7 @@ const moon = new THREE.Mesh(
     })
 );
 scene.add(moon);
-moon.position.z = 10;            //Both of these do
+moon.position.z = 20;            //Both of these do
 moon.position.setX(-10);         //the same thing!
 
 wes.position.z = -5;
@@ -89,9 +89,9 @@ wes.position.y = 0.3;
 
 function moveCamera(){
     const t = document.body.getBoundingClientRect().top; //This will get the position on the webpage that the user has already scrolled to. The "top" property will show us exactly how far we are from the top of the webpage.
-    moon.rotation.x += 0.05;
-    moon.rotation.y += 0.075;
-    moon.rotation.z += 0.05;
+    moon.rotation.x += 0.02;
+    moon.rotation.y += 0.025;
+    moon.rotation.z += 0.01;
 
     wes.rotation.y += 0.01;
     wes.rotation.z += 0.01;
