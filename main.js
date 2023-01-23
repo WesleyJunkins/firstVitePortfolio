@@ -1,7 +1,10 @@
 import './style.css';
-import * as THREE from 'three';
-import { PointLightHelper } from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+//import * as THREE from 'three';
+import * as THREE from 'https://unpkg.com/three@0.127.0/build/three.module.js' //This is a CDN that can be used instead of the above import!
+//import { PointLightHelper } from 'three'; //You don't have to use this if you use the CDN
+//import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+//import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { OrbitControls } from 'https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls.js' //This is a CDN to get orbit controls, which are an "addon" or an "example" that is not included with the main THREE library import above.
 
 const scene = new THREE.Scene();
 
@@ -42,7 +45,7 @@ const material2 = new THREE.MeshStandardMaterial({
 const torus2 = new THREE.Mesh(geometry2, material2) //Geometry + Material
 scene.add(torus2);
 
-//const controls = new OrbitControls(camera, renderer.domElement); //This will listen to dom events on the mouse, and update the camera position accordingly.
+const controls = new OrbitControls(camera, renderer.domElement); //This will listen to dom events on the mouse, and update the camera position accordingly.
 
 function addStar(){
     const geometry = new THREE.SphereGeometry(0.25, 24, 24);
