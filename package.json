@@ -13,5 +13,17 @@
   },
   "dependencies": {
     "three": "^0.148.0"
-  }
+  },
+  "description": "My first Vite portfolio using HTML, Javascript, and ThreeJS",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WesleyJunkins/firstVitePortfolio.git"
+  },
+  "author": "Wesley Junkins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WesleyJunkins/firstVitePortfolio/issues"
+  },
+  "homepage": "https://github.com/WesleyJunkins/firstVitePortfolio#readme"
 }
