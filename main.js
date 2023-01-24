@@ -1,4 +1,4 @@
-import './style.css';
+//import './style.css';
 //import * as THREE from 'three';
 import * as THREE from 'https://unpkg.com/three@0.127.0/build/three.module.js' //This is a CDN that can be used instead of the above import!
 //import { PointLightHelper } from 'three'; //You don't have to use this if you use the CDN
